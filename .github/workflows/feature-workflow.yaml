@@ -1,0 +1,10 @@
+name: Workflow
+on:
+   push:
+      branches: [feature/**]
+jobs:
+   Build:
+    runs-on: ubuntu-latest
+    steps:
+       - name: Check new feature
+         run: echo "start unit testing"
