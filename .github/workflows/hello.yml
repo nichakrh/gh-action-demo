@@ -10,3 +10,7 @@ jobs:
     steps:
       - name: Run a one-line script
         run: echo "Hello GitHub Action!"
+  second-job:
+    runs-on: windows-latest
+    steps:
+      - run: echo "this jo is running on ${{ runner.os }}"
