@@ -19,7 +19,7 @@ jobs:
   echo-vars:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo GitHub available variables
+      - name: Echo GitHub variables
         run: |
           echo "This job triggered by ${{ github.event_name }}"
           echo "This repository is ${{ github.repository }}"
