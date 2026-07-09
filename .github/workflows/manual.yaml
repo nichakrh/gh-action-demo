@@ -5,8 +5,9 @@ on:
         description: 'Target Environment'
         required: true
         type: choice
+        options:
           - "Staging"
-          - "Prod"
+          - "Prodution"
       run_ui_tests:
           description: 'Run UI testing'
           required: true
