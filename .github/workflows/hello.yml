@@ -1,33 +1,41 @@
 name: Hello World
-on: 
+
+on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths-ignore:
       - ".github/workflows/*"
+
   pull_request:
-    branches: [main]
+    branches:
+      - main
+
   repository_dispatch:
-    types: ["on-demand-test"]
-jobs: 
+    types:
+      - on-demand-test
+
+jobs:
   echo-vars:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo github avaliable
-       run:
-         echo "This job trigger by ${{ github.event_name }}"
-         echo "This repository is ${{ github.repository }}"
-         echo "This branch is ${{ github.ref_name }}"
+      - name: Echo GitHub available variables
+        run: |
+          echo "This job triggered by ${{ github.event_name }}"
+          echo "This repository is ${{ github.repository }}"
+          echo "This branch is ${{ github.ref_name }}"
+
   hello-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script   
-        run: echo "Hello Github Action!"
+      - name: Run a one-line script
+        run: echo "Hello GitHub Action!"
 
-      - name: Retriver client payload
+      - name: Retrieve client payload
         run: echo "Client send status = ${{ github.event.client_payload.status }}"
 
-  Second-job:
+  second-job:
     runs-on: windows-latest
-    needs : hello-job
+    needs: hello-job
     steps:
       - run: echo "This job is running on ${{ runner.os }}"
